@@ -1,1 +1,40 @@
-/* Пиши стили тут */
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center; 
+  align-items: center;
+}
+
+.rating input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.rating label {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+
+  background: url('img/star-empty.png') no-repeat center/contain;
+}
+
+.rating label::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('img/troll.png') no-repeat center/contain;
+  background-size: 90% auto;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.rating label:hover::after,
+.rating label:hover ~ label::after {
+  opacity: 1;
+}
+
+.rating input:checked + label::after,
+.rating input:checked + label ~ label::after {
+  opacity: 1;
+}
